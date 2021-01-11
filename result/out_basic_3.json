@@ -1,0 +1,30 @@
+{
+  "distributors" : [ {
+    "isBankrupt" : false,
+    "id" : 0,
+    "contracts" : [ {
+      "remainedContractMonths" : 0,
+      "consumerId" : 0,
+      "price" : 32
+    }, {
+      "remainedContractMonths" : 0,
+      "consumerId" : 1,
+      "price" : 32
+    } ],
+    "budget" : 103
+  }, {
+    "isBankrupt" : false,
+    "id" : 1,
+    "contracts" : [ ],
+    "budget" : 34
+  } ],
+  "consumers" : [ {
+    "isBankrupt" : false,
+    "id" : 0,
+    "budget" : 189
+  }, {
+    "isBankrupt" : false,
+    "id" : 1,
+    "budget" : 294
+  } ]
+}
