@@ -1,7 +1,9 @@
 package strategies;
 
-import database.CostsChange;
+import database.DistributorChange;
+import database.ProducerChange;
 import database.Update;
+import entities.Producer;
 import payment.Contract;
 import entities.Consumer;
 import entities.Distributor;
@@ -22,14 +24,27 @@ public final class Strategy {
      */
     public void updateDistributorCosts(final ArrayList<Distributor> distributors,
                                        final Update update) {
-        for (CostsChange change : update.getCostsChanges()) {
+        for (DistributorChange change : update.getDistributorChanges()) {
             Distributor distributor = distributors.get(change.getId());
             if (distributor != null && !distributor.isBankrupt()) {
                 distributor.setInfrastructureCost(change.getInfrastructureCost());
-                distributor.setProductionCost(change.getProductionCost());
             }
         }
     }
+
+    /**
+     * Update and change the costs for each producer
+     */
+    public void updateProducerCosts(final ArrayList<Producer> producers,
+                                    final Update update) {
+        for (ProducerChange change : update.getProducerChanges()) {
+            Producer producer = producers.get(change.getId());
+            if (producer != null) {
+                producer.setEnergyPerDistributor(change.getEnergyPerDistributor());
+            }
+        }
+    }
+
     /**
      * Determine and set contract cost for each distributor
      */

@@ -3,6 +3,7 @@ package database;
 import entities.Consumer;
 import entities.Distributor;
 import entities.Entity;
+import entities.Producer;
 import io.SingletonInput;
 
 import java.util.ArrayList;
@@ -16,15 +17,18 @@ public final class Database {
 
     private ArrayList<Consumer> consumers;
     private ArrayList<Distributor> distributors;
+    private ArrayList<Producer> producers;
     private ArrayList<Update> updates;
     private int numberOfTurns;
 
     private Database(final ArrayList<Consumer> consumers,
                      final ArrayList<Distributor> distributors,
+                     final ArrayList<Producer> producers,
                      final ArrayList<Update> updates,
                      final int numberOfTurns) {
         this.consumers = consumers;
         this.distributors = distributors;
+        this.producers = producers;
         this.updates = updates;
         this.numberOfTurns = numberOfTurns;
     }
@@ -48,9 +52,11 @@ public final class Database {
                 (ArrayList<Consumer>) Entity.transformInput(input.getConsumers());
         ArrayList<Distributor> distributors =
                 (ArrayList<Distributor>) Entity.transformInput(input.getDistributors());
+        ArrayList<Producer> producers =
+                (ArrayList<Producer>) Entity.transformInput(input.getProducers());
         ArrayList<Update> updates = input.getMonthlyUpdates();
         int numberOfTurns = input.getNumberOfTurns() + 1;
-        database = new Database(consumers, distributors, updates, numberOfTurns);
+        database = new Database(consumers, distributors, producers, updates, numberOfTurns);
     }
 
     /**
@@ -68,6 +74,10 @@ public final class Database {
 
     public ArrayList<Distributor> getDistributors() {
         return distributors;
+    }
+
+    public ArrayList<Producer> getProducers() {
+        return producers;
     }
 
     public ArrayList<Update> getUpdates() {

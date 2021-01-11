@@ -14,15 +14,18 @@ public final class SingletonInput {
     private final int numberOfTurns;
     private final ArrayList<EntityInput> consumers;
     private final ArrayList<EntityInput> distributors;
+    private final ArrayList<EntityInput> producers;
     private final ArrayList<Update> monthlyUpdates;
 
     private SingletonInput(final int numberOfTurns,
                           final ArrayList<EntityInput> consumers,
                           final ArrayList<EntityInput> distributors,
+                           final ArrayList<EntityInput> producers,
                           final ArrayList<Update> monthlyUpdates) {
         this.numberOfTurns = numberOfTurns;
         this.consumers = consumers;
         this.distributors = distributors;
+        this.producers = producers;
         this.monthlyUpdates = monthlyUpdates;
     }
 
@@ -43,9 +46,10 @@ public final class SingletonInput {
     public static void init(final int numberOfTurns,
                             final ArrayList<EntityInput> consumers,
                             final ArrayList<EntityInput> distributors,
+                            final ArrayList<EntityInput> producers,
                             final ArrayList<Update> monthlyUpdates) {
         input = new SingletonInput(numberOfTurns, consumers,
-                distributors, monthlyUpdates);
+                distributors, producers, monthlyUpdates);
     }
 
     public int getNumberOfTurns() {
@@ -58,6 +62,10 @@ public final class SingletonInput {
 
     public ArrayList<EntityInput> getDistributors() {
         return distributors;
+    }
+
+    public ArrayList<EntityInput> getProducers() {
+        return producers;
     }
 
     public ArrayList<Update> getMonthlyUpdates() {

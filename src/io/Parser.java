@@ -1,7 +1,9 @@
 package io;
 
-import database.CostsChange;
+import database.DistributorChange;
+import database.ProducerChange;
 import database.Update;
+import entities.Entity;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -31,6 +33,7 @@ public final class Parser {
         ArrayList<Update> monthlyUpdates = null;
         ArrayList<EntityInput> consumers = new ArrayList<>();
         ArrayList<EntityInput> distributors = new ArrayList<>();
+        ArrayList<EntityInput> producers = new ArrayList<>();
 
         try {
             /* parse the contents of the JSON file */
@@ -46,6 +49,8 @@ public final class Parser {
                     initialData.get(Constants.CONSUMERS);
             JSONArray jsonDistributors = (JSONArray)
                     initialData.get(Constants.DISTRIBUTORS);
+            JSONArray jsonProducers = (JSONArray)
+                    initialData.get(Constants.PRODUCERS);
 
             /* create consumers input */
             if (jsonConsumers != null) {
@@ -79,20 +84,47 @@ public final class Parser {
                             ((Long) ((JSONObject) jsonDistributor).
                                     get(Constants.INITIAL_INF_COST)).intValue(),
                             ((Long) ((JSONObject) jsonDistributor).
-                                    get(Constants.INITIAL_PR_COST)).intValue()
+                                    get(Constants.ENERGY_NEEDED)).intValue(),
+                            (String) ((JSONObject) jsonDistributor).
+                                    get(Constants.PRODUCER_STRATEGY)
                     ));
                 }
             } else {
                 distributors = null;
                 System.out.println("NO VALID DISTRIBUTORS");
             }
+
+            /* create producers input */
+            if (jsonProducers != null) {
+                for (Object jsonProducer : jsonProducers) {
+                    producers.add(new EntityInput(
+                            Constants.PRODUCER,
+                            ((Long) ((JSONObject) jsonProducer).
+                                    get(Constants.ID)).intValue(),
+                            (String) ((JSONObject) jsonProducer).
+                                    get(Constants.ENERGY_TYPE),
+                            ((Long) ((JSONObject) jsonProducer).
+                                    get(Constants.MAX_DISTRIBUTORS)).intValue(),
+                            (Double) ((JSONObject) jsonProducer).
+                                    get(Constants.PRICE_KW),
+                            ((Long) ((JSONObject) jsonProducer).
+                                    get(Constants.ENERGY_PER_DISTRIBUTOR)).intValue()
+                    ));
+                }
+            } else {
+                producers = null;
+                System.out.println("NO VALID PRODUCERS");
+            }
+
             monthlyUpdates = readMonthlyUpdates(jsonObject);
+
         } catch (ParseException | IOException e) {
             e.printStackTrace();
         }
 
         /* initialize singleton input database */
-        SingletonInput.init(numberOfTurns, consumers, distributors, monthlyUpdates);
+        SingletonInput.init(numberOfTurns, consumers, distributors,
+                            producers, monthlyUpdates);
     }
 
     /**
@@ -109,11 +141,13 @@ public final class Parser {
         if (jsonUpdates != null) {
             for (Object jsonIterator : jsonUpdates) {
                 ArrayList<EntityInput> newConsumers = new ArrayList<>();
-                ArrayList<CostsChange> costsChanges = new ArrayList<>();
+                ArrayList<DistributorChange> distributorChanges = new ArrayList<>();
+                ArrayList<ProducerChange> producerChanges = new ArrayList<>();
+
+                /* create new consumers input */
                 JSONArray jsonNewConsumers = (JSONArray) ((JSONObject)
                         jsonIterator).get(Constants.NEW_CONSUMERS);
 
-                /* create new consumers input */
                 if (jsonNewConsumers != null) {
                     for (Object jsonConsumer : jsonNewConsumers) {
                         newConsumers.add(new EntityInput(
@@ -131,27 +165,44 @@ public final class Parser {
                     System.out.println("NO NEW CONSUMERS");
                 }
 
-                JSONArray jsonCostsChanges = (JSONArray) ((JSONObject)
-                        jsonIterator).get(Constants.COSTS_CHANGES);
+                /* create distributor changes input */
+                JSONArray jsonDistributorChanges = (JSONArray) ((JSONObject)
+                        jsonIterator).get(Constants.DISTRIBUTOR_CHANGES);
 
-                /* create cost changes input */
-                if (jsonCostsChanges != null) {
-                    for (Object jsonChange : jsonCostsChanges) {
-                        costsChanges.add(new CostsChange(
+                if (jsonDistributorChanges != null) {
+                    for (Object jsonChange : jsonDistributorChanges) {
+                        distributorChanges.add(new DistributorChange(
                                 ((Long) ((JSONObject) jsonChange).
                                         get(Constants.ID)).intValue(),
                                 ((Long) ((JSONObject) jsonChange).
-                                        get(Constants.INF_COST)).intValue(),
-                                ((Long) ((JSONObject) jsonChange).
-                                        get(Constants.PR_COST)).intValue()
+                                        get(Constants.INF_COST)).intValue()
                         ));
                     }
                 } else {
-                    costsChanges = null;
-                    System.out.println("NO COST CHANGES");
+                    distributorChanges = null;
+                    System.out.println("NO DISTRIBUTOR CHANGES");
                 }
 
-                monthlyUpdates.add(new Update(newConsumers, costsChanges));
+                /* create producer changes input */
+                JSONArray jsonProducerChanges = (JSONArray) ((JSONObject)
+                        jsonIterator).get(Constants.PRODUCER_CHANGES);
+
+                if (jsonProducerChanges != null) {
+                    for (Object jsonChange : jsonProducerChanges) {
+                        producerChanges.add(new ProducerChange(
+                                ((Long) ((JSONObject) jsonChange).
+                                        get(Constants.ID)).intValue(),
+                                ((Long) ((JSONObject) jsonChange).
+                                        get(Constants.ENERGY_PER_DISTRIBUTOR)).intValue()
+                        ));
+                    }
+                } else {
+                    producerChanges = null;
+                    System.out.println("NO PRODUCER CHANGES");
+                }
+
+                monthlyUpdates.add(new Update(newConsumers,
+                        distributorChanges, producerChanges));
             }
         }
         return monthlyUpdates;

@@ -13,22 +13,26 @@ import java.util.ArrayList;
 public final class Distributor implements Entity, Payee {
     private final int id;
     private final int contractLength;
+    private final int energyNeededKW;
+    private final String producerStrategy;
+    private int budget;
     private int infrastructureCost;
     private int productionCost;
     private int contractCost;
-    private int budget;
     private boolean isBankrupt;
     private final ArrayList<Contract> contracts;
 
     public Distributor(final int id, final int contractLength,
                        final int initialBudget,
                        final int initialInfrastructureCost,
-                       final int initialProductionCost) {
+                       final int energyNeededKW,
+                       final String producerStrategy) {
         this.id = id;
         this.contractLength = contractLength;
         this.budget = initialBudget;
         this.infrastructureCost = initialInfrastructureCost;
-        this.productionCost = initialProductionCost;
+        this.energyNeededKW = energyNeededKW;
+        this.producerStrategy = producerStrategy;
         this.contracts = new ArrayList<>();
     }
 
@@ -109,4 +113,11 @@ public final class Distributor implements Entity, Payee {
         this.contractCost = contractCost;
     }
 
+    public int getEnergyNeededKW() {
+        return energyNeededKW;
+    }
+
+    public String getProducerStrategy() {
+        return producerStrategy;
+    }
 }

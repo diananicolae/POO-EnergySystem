@@ -1,54 +1,38 @@
 {
   "distributors" : [ {
-    "isBankrupt" : true,
-    "id" : 0,
-    "contracts" : [ ],
-    "budget" : -10
-  }, {
+    "energyNeededKW" : 2500,
     "isBankrupt" : false,
-    "id" : 1,
+    "id" : 0,
     "contracts" : [ {
-      "remainedContractMonths" : 1,
+      "remainedContractMonths" : 5,
       "consumerId" : 0,
-      "price" : 15
-    }, {
-      "remainedContractMonths" : 1,
-      "consumerId" : 1,
-      "price" : 15
-    }, {
-      "remainedContractMonths" : 1,
-      "consumerId" : 2,
-      "price" : 15
-    }, {
-      "remainedContractMonths" : 1,
-      "consumerId" : 3,
-      "price" : 15
-    }, {
-      "remainedContractMonths" : 1,
-      "consumerId" : 4,
-      "price" : 15
+      "price" : 14
     } ],
-    "budget" : 282
+    "contractCost" : 14,
+    "budget" : 146
   } ],
   "consumers" : [ {
     "isBankrupt" : false,
     "id" : 0,
-    "budget" : 33
+    "budget" : 664
+  } ],
+  "energyProducers" : [ {
+    "energyType" : "COAL",
+    "maxDistributors" : 10,
+    "energyPerDistributor" : 1495,
+    "id" : 0,
+    "priceKW" : 0.05
   }, {
-    "isBankrupt" : false,
+    "energyType" : "NUCLEAR",
+    "maxDistributors" : 10,
+    "energyPerDistributor" : 1995,
     "id" : 1,
-    "budget" : 643
+    "priceKW" : 0.05
   }, {
-    "isBankrupt" : false,
+    "energyType" : "SOLAR",
+    "maxDistributors" : 3,
+    "energyPerDistributor" : 1583,
     "id" : 2,
-    "budget" : 703
-  }, {
-    "isBankrupt" : false,
-    "id" : 3,
-    "budget" : 139
-  }, {
-    "isBankrupt" : false,
-    "id" : 4,
-    "budget" : 0
+    "priceKW" : 0.04
   } ]
 }

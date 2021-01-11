@@ -1,48 +1,38 @@
 {
   "distributors" : [ {
+    "energyNeededKW" : 2200,
     "isBankrupt" : false,
     "id" : 0,
     "contracts" : [ {
-      "remainedContractMonths" : 0,
-      "consumerId" : 2,
-      "price" : 9
-    }, {
-      "remainedContractMonths" : 1,
+      "remainedContractMonths" : 5,
       "consumerId" : 0,
-      "price" : 9
-    }, {
-      "remainedContractMonths" : 1,
-      "consumerId" : 1,
-      "price" : 9
+      "price" : 14
     } ],
-    "budget" : 348
-  }, {
-    "isBankrupt" : false,
-    "id" : 1,
-    "contracts" : [ ],
-    "budget" : 40
-  }, {
-    "isBankrupt" : false,
-    "id" : 2,
-    "contracts" : [ ],
-    "budget" : 190
-  }, {
-    "isBankrupt" : false,
-    "id" : 3,
-    "contracts" : [ ],
-    "budget" : 75
+    "contractCost" : 14,
+    "budget" : 146
   } ],
   "consumers" : [ {
     "isBankrupt" : false,
     "id" : 0,
-    "budget" : 171
+    "budget" : 664
+  } ],
+  "energyProducers" : [ {
+    "energyType" : "COAL",
+    "maxDistributors" : 10,
+    "energyPerDistributor" : 3695,
+    "id" : 0,
+    "priceKW" : 0.03
   }, {
-    "isBankrupt" : false,
+    "energyType" : "WIND",
+    "maxDistributors" : 10,
+    "energyPerDistributor" : 2995,
     "id" : 1,
-    "budget" : 241
+    "priceKW" : 0.01
   }, {
-    "isBankrupt" : false,
+    "energyType" : "HYDRO",
+    "maxDistributors" : 3,
+    "energyPerDistributor" : 2995,
     "id" : 2,
-    "budget" : 222
+    "priceKW" : 0.01
   } ]
 }

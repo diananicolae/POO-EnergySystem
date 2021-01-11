@@ -1,13 +1,26 @@
 {
   "distributors" : [ {
+    "energyNeededKW" : 1956,
     "isBankrupt" : false,
     "id" : 0,
-    "contracts" : [ ],
-    "budget" : 98
+    "contracts" : [ {
+      "remainedContractMonths" : 5,
+      "consumerId" : 0,
+      "price" : 14
+    } ],
+    "contractCost" : 14,
+    "budget" : 146
   } ],
   "consumers" : [ {
-    "isBankrupt" : true,
+    "isBankrupt" : false,
     "id" : 0,
-    "budget" : 52
+    "budget" : 664
+  } ],
+  "energyProducers" : [ {
+    "energyType" : "WIND",
+    "maxDistributors" : 10,
+    "energyPerDistributor" : 2695,
+    "id" : 0,
+    "priceKW" : 0.01
   } ]
 }

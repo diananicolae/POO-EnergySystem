@@ -1,110 +1,38 @@
 {
   "distributors" : [ {
+    "energyNeededKW" : 2200,
     "isBankrupt" : false,
     "id" : 0,
-    "contracts" : [ ],
-    "budget" : 117
-  }, {
-    "isBankrupt" : false,
-    "id" : 1,
     "contracts" : [ {
-      "remainedContractMonths" : 0,
+      "remainedContractMonths" : 5,
       "consumerId" : 0,
-      "price" : 13
-    }, {
-      "remainedContractMonths" : 0,
-      "consumerId" : 1,
-      "price" : 13
-    }, {
-      "remainedContractMonths" : 0,
-      "consumerId" : 2,
-      "price" : 13
-    }, {
-      "remainedContractMonths" : 0,
-      "consumerId" : 3,
-      "price" : 13
-    }, {
-      "remainedContractMonths" : 0,
-      "consumerId" : 4,
-      "price" : 13
-    }, {
-      "remainedContractMonths" : 0,
-      "consumerId" : 5,
-      "price" : 13
-    }, {
-      "remainedContractMonths" : 0,
-      "consumerId" : 6,
-      "price" : 13
-    }, {
-      "remainedContractMonths" : 0,
-      "consumerId" : 7,
-      "price" : 13
-    }, {
-      "remainedContractMonths" : 0,
-      "consumerId" : 8,
-      "price" : 13
-    }, {
-      "remainedContractMonths" : 0,
-      "consumerId" : 9,
-      "price" : 13
-    }, {
-      "remainedContractMonths" : 0,
-      "consumerId" : 10,
-      "price" : 13
-    }, {
-      "remainedContractMonths" : 0,
-      "consumerId" : 11,
-      "price" : 13
+      "price" : 14
     } ],
-    "budget" : 288
+    "contractCost" : 14,
+    "budget" : 146
   } ],
   "consumers" : [ {
     "isBankrupt" : false,
     "id" : 0,
-    "budget" : 257
+    "budget" : 664
+  } ],
+  "energyProducers" : [ {
+    "energyType" : "COAL",
+    "maxDistributors" : 10,
+    "energyPerDistributor" : 3695,
+    "id" : 0,
+    "priceKW" : 0.01
   }, {
-    "isBankrupt" : false,
+    "energyType" : "WIND",
+    "maxDistributors" : 10,
+    "energyPerDistributor" : 3695,
     "id" : 1,
-    "budget" : 302
+    "priceKW" : 0.01
   }, {
-    "isBankrupt" : false,
+    "energyType" : "NUCLEAR",
+    "maxDistributors" : 3,
+    "energyPerDistributor" : 5583,
     "id" : 2,
-    "budget" : 268
-  }, {
-    "isBankrupt" : false,
-    "id" : 3,
-    "budget" : 203
-  }, {
-    "isBankrupt" : false,
-    "id" : 4,
-    "budget" : 272
-  }, {
-    "isBankrupt" : false,
-    "id" : 5,
-    "budget" : 274
-  }, {
-    "isBankrupt" : false,
-    "id" : 6,
-    "budget" : 76
-  }, {
-    "isBankrupt" : false,
-    "id" : 7,
-    "budget" : 71
-  }, {
-    "isBankrupt" : false,
-    "id" : 8,
-    "budget" : 85
-  }, {
-    "isBankrupt" : false,
-    "id" : 9,
-    "budget" : 109
-  }, {
-    "isBankrupt" : false,
-    "id" : 10,
-    "budget" : 93
-  }, {
-    "isBankrupt" : false,
-    "id" : 11,
-    "budget" : 107
+    "priceKW" : 0.02
   } ]
 }

@@ -1,7 +1,13 @@
 Starting audit...
 [ERROR] C:\Users\Diana\IdeaProjects\POO-EnergySystem\.\src\entities\EnergyType.java:17:16: Parameter label should be final. [FinalParameters]
 [ERROR] C:\Users\Diana\IdeaProjects\POO-EnergySystem\.\src\entities\EnergyType.java:17:30: Parameter renewable should be final. [FinalParameters]
+[ERROR] C:\Users\Diana\IdeaProjects\POO-EnergySystem\.\src\entities\Producer.java:34:27: Parameter budget should be final. [FinalParameters]
+[ERROR] C:\Users\Diana\IdeaProjects\POO-EnergySystem\.\src\entities\Producer.java:44:29: Parameter bankrupt should be final. [FinalParameters]
+[ERROR] C:\Users\Diana\IdeaProjects\POO-EnergySystem\.\src\entities\Producer.java:69:41: Parameter energyPerDistributor should be final. [FinalParameters]
+[ERROR] C:\Users\Diana\IdeaProjects\POO-EnergySystem\.\src\io\Parser.java:6:8: Unused import - entities.Entity. [UnusedImports]
+[ERROR] C:\Users\Diana\IdeaProjects\POO-EnergySystem\.\src\Main.java:48:71: '66' is a magic number. [MagicNumber]
 [ERROR] C:\Users\Diana\IdeaProjects\POO-EnergySystem\.\src\strategies\EnergyChoiceStrategyType.java:10:25: Variable 'label' must be private and have accessor methods. [VisibilityModifier]
 [ERROR] C:\Users\Diana\IdeaProjects\POO-EnergySystem\.\src\strategies\EnergyChoiceStrategyType.java:12:30: Parameter label should be final. [FinalParameters]
+[ERROR] C:\Users\Diana\IdeaProjects\POO-EnergySystem\.\src\Test.java:78:29: Parameter gitScore should be final. [FinalParameters]
 Audit done.
-Checkstyle ends with 4 errors.
+Checkstyle ends with 10 errors.

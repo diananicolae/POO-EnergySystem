@@ -1,0 +1,106 @@
+{
+  "distributors" : [ {
+    "energyNeededKW" : 3960,
+    "isBankrupt" : false,
+    "id" : 0,
+    "contracts" : [ ],
+    "contractCost" : 25,
+    "budget" : 1144
+  }, {
+    "energyNeededKW" : 4816,
+    "isBankrupt" : false,
+    "id" : 1,
+    "contracts" : [ ],
+    "contractCost" : 21,
+    "budget" : 711
+  }, {
+    "energyNeededKW" : 3862,
+    "isBankrupt" : false,
+    "id" : 2,
+    "contracts" : [ ],
+    "contractCost" : 18,
+    "budget" : 940
+  }, {
+    "energyNeededKW" : 2127,
+    "isBankrupt" : false,
+    "id" : 3,
+    "contracts" : [ {
+      "remainedContractMonths" : 3,
+      "consumerId" : 2,
+      "price" : 14
+    }, {
+      "remainedContractMonths" : 4,
+      "consumerId" : 3,
+      "price" : 9
+    }, {
+      "remainedContractMonths" : 5,
+      "consumerId" : 0,
+      "price" : 7
+    }, {
+      "remainedContractMonths" : 5,
+      "consumerId" : 1,
+      "price" : 7
+    }, {
+      "remainedContractMonths" : 5,
+      "consumerId" : 4,
+      "price" : 7
+    }, {
+      "remainedContractMonths" : 7,
+      "consumerId" : 5,
+      "price" : 3
+    } ],
+    "contractCost" : 3,
+    "budget" : 632
+  }, {
+    "energyNeededKW" : 4413,
+    "isBankrupt" : false,
+    "id" : 4,
+    "contracts" : [ ],
+    "contractCost" : 29,
+    "budget" : 1486
+  } ],
+  "consumers" : [ {
+    "isBankrupt" : false,
+    "id" : 0,
+    "budget" : 957
+  }, {
+    "isBankrupt" : false,
+    "id" : 1,
+    "budget" : 803
+  }, {
+    "isBankrupt" : false,
+    "id" : 2,
+    "budget" : 326
+  }, {
+    "isBankrupt" : false,
+    "id" : 3,
+    "budget" : 264
+  }, {
+    "isBankrupt" : false,
+    "id" : 4,
+    "budget" : 417
+  }, {
+    "isBankrupt" : false,
+    "id" : 5,
+    "budget" : 92
+  } ],
+  "energyProducers" : [ {
+    "energyType" : "NUCLEAR",
+    "maxDistributors" : 8,
+    "energyPerDistributor" : 9735,
+    "id" : 0,
+    "priceKW" : 0.09
+  }, {
+    "energyType" : "WIND",
+    "maxDistributors" : 6,
+    "energyPerDistributor" : 9277,
+    "id" : 1,
+    "priceKW" : 0.06
+  }, {
+    "energyType" : "HYDRO",
+    "maxDistributors" : 9,
+    "energyPerDistributor" : 8760,
+    "id" : 2,
+    "priceKW" : 0.04
+  } ]
+}

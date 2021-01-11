@@ -45,6 +45,8 @@ public final class Main {
 
         /* print result to output */
         Writer writer = new Writer(args[1]);
+        Writer writer1 = new Writer("result/out_" + args[0].substring(66));
         writer.writeFile(database);
+        writer1.writeFile(database);
     }
 }

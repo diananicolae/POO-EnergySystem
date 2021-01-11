@@ -1,379 +1,74 @@
 {
   "distributors" : [ {
-    "isBankrupt" : true,
-    "id" : 0,
-    "contracts" : [ ],
-    "budget" : -14
-  }, {
-    "isBankrupt" : true,
-    "id" : 1,
-    "contracts" : [ ],
-    "budget" : -20
-  }, {
+    "energyNeededKW" : 1930,
     "isBankrupt" : false,
-    "id" : 2,
+    "id" : 0,
     "contracts" : [ {
       "remainedContractMonths" : 0,
-      "consumerId" : 2,
-      "price" : 25
-    }, {
-      "remainedContractMonths" : 0,
-      "consumerId" : 12,
-      "price" : 25
-    }, {
-      "remainedContractMonths" : 0,
-      "consumerId" : 13,
-      "price" : 25
-    }, {
-      "remainedContractMonths" : 0,
-      "consumerId" : 38,
-      "price" : 25
-    }, {
-      "remainedContractMonths" : 0,
-      "consumerId" : 42,
-      "price" : 25
-    }, {
-      "remainedContractMonths" : 0,
-      "consumerId" : 50,
-      "price" : 25
-    }, {
-      "remainedContractMonths" : 1,
-      "consumerId" : 7,
-      "price" : 25
-    }, {
-      "remainedContractMonths" : 1,
-      "consumerId" : 16,
-      "price" : 25
-    }, {
-      "remainedContractMonths" : 1,
-      "consumerId" : 18,
-      "price" : 25
-    }, {
-      "remainedContractMonths" : 1,
-      "consumerId" : 19,
-      "price" : 25
-    }, {
-      "remainedContractMonths" : 1,
-      "consumerId" : 24,
-      "price" : 25
-    }, {
-      "remainedContractMonths" : 1,
-      "consumerId" : 25,
-      "price" : 25
-    }, {
-      "remainedContractMonths" : 1,
-      "consumerId" : 36,
-      "price" : 25
-    }, {
-      "remainedContractMonths" : 1,
-      "consumerId" : 37,
-      "price" : 25
-    }, {
-      "remainedContractMonths" : 1,
-      "consumerId" : 39,
-      "price" : 25
-    }, {
-      "remainedContractMonths" : 1,
-      "consumerId" : 41,
-      "price" : 25
-    }, {
-      "remainedContractMonths" : 1,
-      "consumerId" : 43,
-      "price" : 25
-    }, {
-      "remainedContractMonths" : 1,
-      "consumerId" : 44,
-      "price" : 25
-    }, {
-      "remainedContractMonths" : 1,
-      "consumerId" : 51,
-      "price" : 25
-    }, {
-      "remainedContractMonths" : 1,
-      "consumerId" : 53,
-      "price" : 25
-    }, {
-      "remainedContractMonths" : 1,
-      "consumerId" : 56,
-      "price" : 25
-    }, {
-      "remainedContractMonths" : 2,
       "consumerId" : 1,
-      "price" : 25
+      "price" : 20
+    }, {
+      "remainedContractMonths" : 1,
+      "consumerId" : 2,
+      "price" : 12
     }, {
       "remainedContractMonths" : 2,
       "consumerId" : 3,
-      "price" : 25
+      "price" : 5
     }, {
-      "remainedContractMonths" : 2,
-      "consumerId" : 8,
-      "price" : 25
+      "remainedContractMonths" : 3,
+      "consumerId" : 4,
+      "price" : 4
     }, {
-      "remainedContractMonths" : 2,
-      "consumerId" : 14,
-      "price" : 25
+      "remainedContractMonths" : 4,
+      "consumerId" : 5,
+      "price" : 2
     }, {
-      "remainedContractMonths" : 2,
-      "consumerId" : 45,
-      "price" : 25
+      "remainedContractMonths" : 5,
+      "consumerId" : 0,
+      "price" : 2
     }, {
-      "remainedContractMonths" : 2,
-      "consumerId" : 46,
-      "price" : 25
-    }, {
-      "remainedContractMonths" : 2,
-      "consumerId" : 54,
-      "price" : 25
+      "remainedContractMonths" : 5,
+      "consumerId" : 6,
+      "price" : 2
     } ],
-    "budget" : 1725
-  }, {
-    "isBankrupt" : true,
-    "id" : 3,
-    "contracts" : [ ],
-    "budget" : -10
-  }, {
-    "isBankrupt" : true,
-    "id" : 4,
-    "contracts" : [ ],
-    "budget" : -15
-  }, {
-    "isBankrupt" : true,
-    "id" : 5,
-    "contracts" : [ ],
-    "budget" : -20
-  }, {
-    "isBankrupt" : true,
-    "id" : 6,
-    "contracts" : [ ],
-    "budget" : -15
+    "contractCost" : 2,
+    "budget" : 292
   } ],
   "consumers" : [ {
-    "isBankrupt" : true,
+    "isBankrupt" : false,
     "id" : 0,
-    "budget" : 20
+    "budget" : 200
   }, {
     "isBankrupt" : false,
     "id" : 1,
-    "budget" : 279
+    "budget" : 164
   }, {
     "isBankrupt" : false,
     "id" : 2,
-    "budget" : 803
+    "budget" : 481
   }, {
     "isBankrupt" : false,
     "id" : 3,
-    "budget" : 771
+    "budget" : 340
   }, {
-    "isBankrupt" : true,
+    "isBankrupt" : false,
     "id" : 4,
-    "budget" : 40
+    "budget" : 238
   }, {
-    "isBankrupt" : true,
+    "isBankrupt" : false,
     "id" : 5,
-    "budget" : 16
+    "budget" : 213
   }, {
-    "isBankrupt" : true,
+    "isBankrupt" : false,
     "id" : 6,
-    "budget" : 55
-  }, {
-    "isBankrupt" : false,
-    "id" : 7,
-    "budget" : 378
-  }, {
-    "isBankrupt" : false,
-    "id" : 8,
-    "budget" : 695
-  }, {
-    "isBankrupt" : true,
-    "id" : 9,
-    "budget" : 12
-  }, {
-    "isBankrupt" : true,
-    "id" : 10,
-    "budget" : 75
-  }, {
-    "isBankrupt" : true,
-    "id" : 11,
-    "budget" : 52
-  }, {
-    "isBankrupt" : false,
-    "id" : 12,
-    "budget" : 1358
-  }, {
-    "isBankrupt" : false,
-    "id" : 13,
-    "budget" : 1438
-  }, {
-    "isBankrupt" : false,
-    "id" : 14,
-    "budget" : 382
-  }, {
-    "isBankrupt" : true,
-    "id" : 15,
-    "budget" : 59
-  }, {
-    "isBankrupt" : false,
-    "id" : 16,
-    "budget" : 439
-  }, {
-    "isBankrupt" : true,
-    "id" : 17,
-    "budget" : 54
-  }, {
-    "isBankrupt" : false,
-    "id" : 18,
-    "budget" : 324
-  }, {
-    "isBankrupt" : false,
-    "id" : 19,
-    "budget" : 643
-  }, {
-    "isBankrupt" : true,
-    "id" : 20,
-    "budget" : 42
-  }, {
-    "isBankrupt" : true,
-    "id" : 21,
-    "budget" : 44
-  }, {
-    "isBankrupt" : true,
-    "id" : 22,
-    "budget" : 47
-  }, {
-    "isBankrupt" : true,
-    "id" : 23,
-    "budget" : 17
-  }, {
-    "isBankrupt" : false,
-    "id" : 24,
-    "budget" : 857
-  }, {
-    "isBankrupt" : false,
-    "id" : 25,
-    "budget" : 772
-  }, {
-    "isBankrupt" : true,
-    "id" : 26,
-    "budget" : 61
-  }, {
-    "isBankrupt" : true,
-    "id" : 27,
-    "budget" : 41
-  }, {
-    "isBankrupt" : true,
-    "id" : 28,
-    "budget" : 36
-  }, {
-    "isBankrupt" : true,
-    "id" : 29,
-    "budget" : 50
-  }, {
-    "isBankrupt" : true,
-    "id" : 30,
-    "budget" : 88
-  }, {
-    "isBankrupt" : true,
-    "id" : 31,
-    "budget" : 67
-  }, {
-    "isBankrupt" : true,
-    "id" : 32,
-    "budget" : 30
-  }, {
-    "isBankrupt" : true,
-    "id" : 33,
-    "budget" : 50
-  }, {
-    "isBankrupt" : true,
-    "id" : 34,
-    "budget" : 20
-  }, {
-    "isBankrupt" : true,
-    "id" : 35,
-    "budget" : 30
-  }, {
-    "isBankrupt" : false,
-    "id" : 36,
-    "budget" : 7
-  }, {
-    "isBankrupt" : false,
-    "id" : 37,
-    "budget" : 332
-  }, {
-    "isBankrupt" : false,
-    "id" : 38,
-    "budget" : 22
-  }, {
-    "isBankrupt" : false,
-    "id" : 39,
-    "budget" : 262
-  }, {
-    "isBankrupt" : true,
-    "id" : 40,
-    "budget" : 21
-  }, {
-    "isBankrupt" : false,
-    "id" : 41,
-    "budget" : 172
-  }, {
-    "isBankrupt" : false,
-    "id" : 42,
-    "budget" : 754
-  }, {
-    "isBankrupt" : false,
-    "id" : 43,
-    "budget" : 294
-  }, {
-    "isBankrupt" : false,
-    "id" : 44,
-    "budget" : 104
-  }, {
-    "isBankrupt" : false,
-    "id" : 45,
-    "budget" : 234
-  }, {
-    "isBankrupt" : false,
-    "id" : 46,
-    "budget" : 99
-  }, {
-    "isBankrupt" : true,
-    "id" : 47,
-    "budget" : 29
-  }, {
-    "isBankrupt" : true,
-    "id" : 48,
-    "budget" : 31
-  }, {
-    "isBankrupt" : true,
-    "id" : 49,
-    "budget" : 12
-  }, {
-    "isBankrupt" : false,
-    "id" : 50,
-    "budget" : 21
-  }, {
-    "isBankrupt" : false,
-    "id" : 51,
-    "budget" : 41
-  }, {
-    "isBankrupt" : true,
-    "id" : 52,
-    "budget" : 28
-  }, {
-    "isBankrupt" : false,
-    "id" : 53,
-    "budget" : 88
-  }, {
-    "isBankrupt" : false,
-    "id" : 54,
-    "budget" : 133
-  }, {
-    "isBankrupt" : true,
-    "id" : 55,
-    "budget" : 20
-  }, {
-    "isBankrupt" : false,
-    "id" : 56,
-    "budget" : 5
+    "budget" : 223
+  } ],
+  "energyProducers" : [ {
+    "energyType" : "WIND",
+    "maxDistributors" : 10,
+    "energyPerDistributor" : 2695,
+    "id" : 0,
+    "priceKW" : 0.01
   } ]
 }

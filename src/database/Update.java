@@ -9,20 +9,26 @@ import java.util.ArrayList;
  */
 public final class Update {
     private final ArrayList<EntityInput> newConsumers;
-    private final ArrayList<CostsChange> costsChanges;
+    private final ArrayList<DistributorChange> distributorChanges;
+    private final ArrayList<ProducerChange> producerChanges;
 
     public Update(final ArrayList<EntityInput> newConsumers,
-                  final ArrayList<CostsChange> costsChanges) {
+                  final ArrayList<DistributorChange> distributorChanges,
+                  final ArrayList<ProducerChange> producerChanges) {
         this.newConsumers = newConsumers;
-        this.costsChanges = costsChanges;
+        this.distributorChanges = distributorChanges;
+        this.producerChanges = producerChanges;
     }
 
     public ArrayList<EntityInput> getNewConsumers() {
         return newConsumers;
     }
 
-    public ArrayList<CostsChange> getCostsChanges() {
-        return costsChanges;
+    public ArrayList<DistributorChange> getDistributorChanges() {
+        return distributorChanges;
     }
 
+    public ArrayList<ProducerChange> getProducerChanges() {
+        return producerChanges;
+    }
 }

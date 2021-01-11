@@ -6,11 +6,16 @@ package io;
 public final class EntityInput {
     private final String type;
     private final int id;
-    private final int initialBudget;
+    private int initialBudget;
     private int monthlyIncome;
     private int contractLength;
     private int initialInfrastructureCost;
-    private int initialProductionCost;
+    private int energyNeededKW;
+    private String producerStrategy;
+    private String energyType;
+    private int maxDistributors;
+    private double priceKW;
+    private int energyPerDistributor;
 
     /**
      * Constructor for Distributor Input object
@@ -19,13 +24,15 @@ public final class EntityInput {
                        final int contractLength,
                        final int initialBudget,
                        final int initialInfrastructureCost,
-                       final int initialProductionCost) {
+                       final int energyNeededKW,
+                       final String producerStrategy) {
         this.type = type;
         this.id = id;
         this.contractLength = contractLength;
         this.initialBudget = initialBudget;
         this.initialInfrastructureCost = initialInfrastructureCost;
-        this.initialProductionCost = initialProductionCost;
+        this.energyNeededKW = energyNeededKW;
+        this.producerStrategy = producerStrategy;
     }
 
     /**
@@ -39,6 +46,24 @@ public final class EntityInput {
         this.initialBudget = initialBudget;
         this.monthlyIncome = monthlyIncome;
     }
+
+    /**
+     * Constructor for Producer Input object
+     */
+    public EntityInput(final String type, final int id,
+                       final String energyType,
+                       final int maxDistributors,
+                       final double priceKW,
+                       final int energyPerDistributor) {
+        this.type = type;
+        this.id = id;
+        this.energyType = energyType;
+        this.maxDistributors = maxDistributors;
+        this.priceKW = priceKW;
+        this.energyPerDistributor = energyPerDistributor;
+    }
+
+
 
     public int getId() {
         return id;
@@ -64,7 +89,27 @@ public final class EntityInput {
         return initialInfrastructureCost;
     }
 
-    public int getInitialProductionCost() {
-        return initialProductionCost;
+    public int getEnergyNeededKW() {
+        return energyNeededKW;
+    }
+
+    public String getProducerStrategy() {
+        return producerStrategy;
+    }
+
+    public String getEnergyType() {
+        return energyType;
+    }
+
+    public int getMaxDistributors() {
+        return maxDistributors;
+    }
+
+    public double getPriceKW() {
+        return priceKW;
+    }
+
+    public int getEnergyPerDistributor() {
+        return energyPerDistributor;
     }
 }

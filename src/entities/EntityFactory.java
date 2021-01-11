@@ -30,7 +30,15 @@ public final class EntityFactory {
                         entity.getContractLength(),
                         entity.getInitialBudget(),
                         entity.getInitialInfrastructureCost(),
-                        entity.getInitialProductionCost());
+                        entity.getEnergyNeededKW(),
+                        entity.getProducerStrategy());
+            }
+            case Constants.PRODUCER -> {
+                return new Producer(entity.getId(),
+                        entity.getEnergyType(),
+                        entity.getMaxDistributors(),
+                        entity.getPriceKW(),
+                        entity.getEnergyPerDistributor());
             }
             default -> {
                 return null;

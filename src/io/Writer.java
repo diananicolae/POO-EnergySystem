@@ -2,6 +2,7 @@ package io;
 
 import database.Database;
 import entities.Consumer;
+import entities.Producer;
 import payment.Contract;
 import entities.Distributor;
 import org.json.simple.JSONArray;
@@ -31,6 +32,7 @@ public final class Writer {
 
         JSONArray jsonConsumers = new JSONArray();
         JSONArray jsonDistributors = new JSONArray();
+        JSONArray jsonProducers = new JSONArray();
         JSONObject finalObject = new JSONObject();
 
         /* create consumer object */
@@ -46,6 +48,8 @@ public final class Writer {
         for (Distributor distributor : database.getDistributors()) {
             JSONObject object = new JSONObject();
             object.put(Constants.ID, distributor.getId());
+            object.put(Constants.ENERGY_NEEDED, distributor.getEnergyNeededKW());
+            object.put(Constants.CONTRACT_COST, distributor.getContractCost());
             object.put(Constants.BUDGET, distributor.getBudget());
             object.put(Constants.IS_BANKRUPT, distributor.isBankrupt());
 
@@ -63,9 +67,24 @@ public final class Writer {
             jsonDistributors.add(object);
         }
 
+        /* create producer object */
+        for (Producer producer : database.getProducers()) {
+            JSONObject object = new JSONObject();
+            object.put(Constants.ID, producer.getId());
+            object.put(Constants.MAX_DISTRIBUTORS, producer.getMaxDistributors());
+            object.put(Constants.PRICE_KW, producer.getPriceKW());
+            object.put(Constants.ENERGY_TYPE, producer.getEnergyType());
+            object.put(Constants.ENERGY_PER_DISTRIBUTOR, producer.getEnergyPerDistributor());
+
+            /* create monthly stats array */
+            JSONArray jsonStats = new JSONArray();
+            jsonProducers.add(object);
+        }
+
         /* create final object */
         finalObject.put(Constants.CONSUMERS, jsonConsumers);
         finalObject.put(Constants.DISTRIBUTORS, jsonDistributors);
+        finalObject.put(Constants.ENERGY_PRODUCERS, jsonProducers);
 
         ObjectMapper mapper = new ObjectMapper();
 
