@@ -3,71 +3,91 @@
     "energyNeededKW" : 1930,
     "isBankrupt" : false,
     "id" : 0,
+    "producerStrategy" : "GREEN",
     "contracts" : [ {
       "remainedContractMonths" : 0,
       "consumerId" : 1,
-      "price" : 20
+      "price" : 22
     }, {
       "remainedContractMonths" : 1,
       "consumerId" : 2,
-      "price" : 12
+      "price" : 19
     }, {
       "remainedContractMonths" : 2,
       "consumerId" : 3,
-      "price" : 5
+      "price" : 9
     }, {
       "remainedContractMonths" : 3,
       "consumerId" : 4,
-      "price" : 4
+      "price" : 14
     }, {
       "remainedContractMonths" : 4,
       "consumerId" : 5,
-      "price" : 2
+      "price" : 4
     }, {
       "remainedContractMonths" : 5,
       "consumerId" : 0,
-      "price" : 2
+      "price" : 12
     }, {
       "remainedContractMonths" : 5,
       "consumerId" : 6,
-      "price" : 2
+      "price" : 12
     } ],
-    "contractCost" : 2,
-    "budget" : 292
+    "contractCost" : 12,
+    "budget" : 261
   } ],
   "consumers" : [ {
     "isBankrupt" : false,
     "id" : 0,
-    "budget" : 200
+    "budget" : 178
   }, {
     "isBankrupt" : false,
     "id" : 1,
-    "budget" : 164
+    "budget" : 152
   }, {
     "isBankrupt" : false,
     "id" : 2,
-    "budget" : 481
+    "budget" : 446
   }, {
     "isBankrupt" : false,
     "id" : 3,
-    "budget" : 340
+    "budget" : 324
   }, {
     "isBankrupt" : false,
     "id" : 4,
-    "budget" : 238
+    "budget" : 208
   }, {
     "isBankrupt" : false,
     "id" : 5,
-    "budget" : 213
+    "budget" : 209
   }, {
     "isBankrupt" : false,
     "id" : 6,
-    "budget" : 223
+    "budget" : 213
   } ],
   "energyProducers" : [ {
     "energyType" : "WIND",
     "maxDistributors" : 10,
-    "energyPerDistributor" : 2695,
+    "monthlyStats" : [ {
+      "month" : 1,
+      "distributorsIds" : [ 0 ]
+    }, {
+      "month" : 2,
+      "distributorsIds" : [ 0 ]
+    }, {
+      "month" : 3,
+      "distributorsIds" : [ 0 ]
+    }, {
+      "month" : 4,
+      "distributorsIds" : [ 0 ]
+    }, {
+      "month" : 5,
+      "distributorsIds" : [ 0 ]
+    }, {
+      "month" : 6,
+      "distributorsIds" : [ 0 ]
+    } ],
+    "energyPerDistributor" : 4523,
     "id" : 0,
     "priceKW" : 0.01
   } ]

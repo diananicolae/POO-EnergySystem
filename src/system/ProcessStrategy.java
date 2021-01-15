@@ -1,13 +1,15 @@
-package strategies;
+package system;
 
 import database.DistributorChange;
 import database.ProducerChange;
 import database.Update;
 import entities.Producer;
-import payment.Contract;
+import database.Contract;
 import entities.Consumer;
 import entities.Distributor;
-import io.Constants;
+import strategies.EnergyChoiceStrategy;
+import strategies.StrategyFactory;
+import utils.Constants;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -15,8 +17,8 @@ import java.util.Comparator;
 /**
  * The class contains every strategy needed for the game process
  */
-public final class Strategy {
-    public Strategy() {
+public final class ProcessStrategy {
+    public ProcessStrategy() {
     }
 
     /**
@@ -41,19 +43,45 @@ public final class Strategy {
             Producer producer = producers.get(change.getId());
             if (producer != null) {
                 producer.setEnergyPerDistributor(change.getEnergyPerDistributor());
+                producer.notifyDistributors();
             }
         }
     }
 
     /**
-     * Determine and set contract cost for each distributor
+     * Determine set contract cost for each distributor
      */
-    public void determineDistributorsContractCosts(final ArrayList<Distributor> distributors) {
+    public void determineContractsCosts(final ArrayList<Distributor> distributors) {
         for (Distributor distributor : distributors) {
             distributor.determineContractCost();
             /* remove expired contracts */
             distributor.getContracts().removeIf(contract ->
                     contract.getRemainedContractMonths() == 0);
+        }
+    }
+
+    /**
+     * Determine production cost for each distributor
+     */
+    public void determineProductionCosts(final ArrayList<Distributor> distributors) {
+        for (Distributor distributor : distributors) {
+            distributor.determineProductionCost();
+        }
+    }
+
+    public void setProducers(final ArrayList<Distributor> distributors,
+                             final ArrayList<Producer> producers) {
+        for (Distributor distributor : distributors) {
+            if (distributor.isBankrupt()) {
+                return;
+            }
+            if (distributor.hasActiveProducerChanges()) {
+                distributor.removeAllProducers();
+                distributor.setActiveProducerChanges(false);
+            }
+            EnergyChoiceStrategy strategy =
+                    StrategyFactory.createStrategy(distributor.getProducerStrategy());
+            strategy.producerChoice(producers, distributor);
         }
     }
 
@@ -137,7 +165,16 @@ public final class Strategy {
                     }
                 }
                 distributor.getContracts().clear();
+                distributor.removeAllProducers();
+
             }
+        }
+    }
+
+    public void determineMonthlyStats(final ArrayList<Producer> producers,
+                                      final int month) {
+        for (Producer producer : producers) {
+            producer.setMonthlyStat(month);
         }
     }
 

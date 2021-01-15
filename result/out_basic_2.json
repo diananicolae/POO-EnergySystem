@@ -3,22 +3,42 @@
     "energyNeededKW" : 1956,
     "isBankrupt" : false,
     "id" : 0,
+    "producerStrategy" : "GREEN",
     "contracts" : [ {
       "remainedContractMonths" : 5,
       "consumerId" : 0,
-      "price" : 14
+      "price" : 16
     } ],
-    "contractCost" : 14,
+    "contractCost" : 16,
     "budget" : 146
   } ],
   "consumers" : [ {
     "isBankrupt" : false,
     "id" : 0,
-    "budget" : 664
+    "budget" : 650
   } ],
   "energyProducers" : [ {
     "energyType" : "COAL",
     "maxDistributors" : 10,
+    "monthlyStats" : [ {
+      "month" : 1,
+      "distributorsIds" : [ 0 ]
+    }, {
+      "month" : 2,
+      "distributorsIds" : [ 0 ]
+    }, {
+      "month" : 3,
+      "distributorsIds" : [ 0 ]
+    }, {
+      "month" : 4,
+      "distributorsIds" : [ 0 ]
+    }, {
+      "month" : 5,
+      "distributorsIds" : [ 0 ]
+    }, {
+      "month" : 6,
+      "distributorsIds" : [ 0 ]
+    } ],
     "energyPerDistributor" : 2695,
     "id" : 0,
     "priceKW" : 0.01

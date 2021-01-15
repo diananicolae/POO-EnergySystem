@@ -1,7 +1,8 @@
 package payment;
 
+import database.Contract;
 import entities.Entity;
-import io.Constants;
+import utils.Constants;
 
 /**
  * Interface for entities that make monthly payments

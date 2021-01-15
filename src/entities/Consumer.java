@@ -1,6 +1,6 @@
 package entities;
 
-import payment.Contract;
+import database.Contract;
 import payment.Payer;
 
 /**

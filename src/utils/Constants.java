@@ -1,4 +1,4 @@
-package io;
+package utils;
 
 /**
  * The class contains useful constants
@@ -29,6 +29,9 @@ public final class Constants {
     public static final String PRICE_KW = "priceKW";
     public static final String ENERGY_PER_DISTRIBUTOR = "energyPerDistributor";
     public static final String MONTHLY_UPDATES = "monthlyUpdates";
+    public static final String MONTHLY_STATS = "monthlyStats";
+    public static final String MONTH = "month";
+    public static final String DISTRIBUTORS_IDS = "distributorsIds";
     public static final String NEW_CONSUMERS = "newConsumers";
     public static final String DISTRIBUTOR_CHANGES = "distributorChanges";
     public static final String PRODUCER_CHANGES = "producerChanges";
@@ -40,9 +43,15 @@ public final class Constants {
     public static final String CONSUMER_ID = "consumerId";
     public static final String PRICE = "price";
     public static final String REM_CONTRACT_MONTHS = "remainedContractMonths";
+    public static final String WIND = "WIND";
+    public static final String SOLAR = "SOLAR";
+    public static final String HYDRO = "HYDRO";
+    public static final String COAL = "COAL";
+    public static final String NUCLEAR = "NUCLEAR";
 
     /* numeric constants */
     public static final double PROFIT_PERCENT = 0.2;
     public static final double DEBT_PERCENT = 1.2;
     public static final int LOWEST_PRICE = 0;
+    public static final int COST_PERCENT = 10;
 }

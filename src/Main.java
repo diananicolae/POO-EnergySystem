@@ -1,7 +1,7 @@
 import database.Database;
 import io.Parser;
 import io.Writer;
-import strategies.Process;
+import system.Process;
 
 /**
  * Entry point for the game.
@@ -18,24 +18,20 @@ public final class Main {
     public static void main(final String[] args) throws Exception {
         /* parse input data */
         Parser parser = new Parser(args[0]);
+//        Parser parser = new Parser("checker/resources/in/basic_12.json");
         parser.readData();
 
         /* initialize singleton database */
         Database.init();
         Database database = Database.getInstance();
-
-        /* loop through (numberOfTurns + 1) updates */
-        for (int updateIndex = 0; updateIndex < database.getNumberOfTurns(); updateIndex++) {
-            /* start a new process for each month */
-            Process process = new Process(database);
-
-            /* updates start in the second round */
-            if (updateIndex > 0) {
-                process.processUpdate(updateIndex);
-            }
-
+        /* start a new process */
+        Process process = new Process(database);
+        /* process payments for the first month */
+        process.processFirstMonthPayments();
+        /* loop through monthly updates */
+        for (int monthNumber = 1; monthNumber < database.getNumberOfTurns(); monthNumber++) {
             /* process payments */
-            boolean gameStatus = process.processPayments();
+            boolean gameStatus = process.processPayments(monthNumber);
 
             /* determine if the game has ended */
             if (gameStatus) {
@@ -45,8 +41,9 @@ public final class Main {
 
         /* print result to output */
         Writer writer = new Writer(args[1]);
-        Writer writer1 = new Writer("result/out_" + args[0].substring(66));
+//        Writer writer = new Writer("result.out");
         writer.writeFile(database);
+        Writer writer1 = new Writer("result/out_" + args[0].substring(66));
         writer1.writeFile(database);
     }
 }

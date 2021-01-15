@@ -1,75 +1,107 @@
 {
   "distributors" : [ {
-    "energyNeededKW" : 2200,
+    "energyNeededKW" : 1930,
     "isBankrupt" : false,
     "id" : 0,
-    "producerStrategy" : "PRICE",
+    "producerStrategy" : "GREEN",
     "contracts" : [ {
+      "remainedContractMonths" : 0,
+      "consumerId" : 1,
+      "price" : 22
+    }, {
+      "remainedContractMonths" : 1,
+      "consumerId" : 2,
+      "price" : 14
+    }, {
+      "remainedContractMonths" : 2,
+      "consumerId" : 3,
+      "price" : 7
+    }, {
+      "remainedContractMonths" : 4,
+      "consumerId" : 4,
+      "price" : 17
+    }, {
       "remainedContractMonths" : 5,
       "consumerId" : 0,
-      "price" : 17
+      "price" : 16
     } ],
-    "contractCost" : 17,
-    "budget" : 146
+    "contractCost" : 16,
+    "budget" : 179
   } ],
   "consumers" : [ {
     "isBankrupt" : false,
     "id" : 0,
-    "budget" : 643
+    "budget" : 174
+  }, {
+    "isBankrupt" : false,
+    "id" : 1,
+    "budget" : 152
+  }, {
+    "isBankrupt" : false,
+    "id" : 2,
+    "budget" : 471
+  }, {
+    "isBankrupt" : false,
+    "id" : 3,
+    "budget" : 332
+  }, {
+    "isBankrupt" : false,
+    "id" : 4,
+    "budget" : 183
   } ],
   "energyProducers" : [ {
-    "energyType" : "COAL",
-    "maxDistributors" : 10,
-    "monthlyStats" : [ {
-      "month" : 1,
-      "distributorsIds" : [ 0 ]
-    }, {
-      "month" : 2,
-      "distributorsIds" : [ 0 ]
-    }, {
-      "month" : 3,
-      "distributorsIds" : [ 0 ]
-    }, {
-      "month" : 4,
-      "distributorsIds" : [ 0 ]
-    }, {
-      "month" : 5,
-      "distributorsIds" : [ 0 ]
-    }, {
-      "month" : 6,
-      "distributorsIds" : [ 0 ]
-    } ],
-    "energyPerDistributor" : 3695,
-    "id" : 0,
-    "priceKW" : 0.01
-  }, {
     "energyType" : "WIND",
     "maxDistributors" : 10,
     "monthlyStats" : [ {
       "month" : 1,
+      "distributorsIds" : [ 0 ]
+    }, {
+      "month" : 2,
+      "distributorsIds" : [ 0 ]
+    }, {
+      "month" : 3,
+      "distributorsIds" : [ 0 ]
+    }, {
+      "month" : 4,
+      "distributorsIds" : [ 0 ]
+    }, {
+      "month" : 5,
+      "distributorsIds" : [ 0 ]
+    }, {
+      "month" : 6,
+      "distributorsIds" : [ 0 ]
+    } ],
+    "energyPerDistributor" : 1077,
+    "id" : 0,
+    "priceKW" : 0.01
+  }, {
+    "energyType" : "SOLAR",
+    "maxDistributors" : 10,
+    "monthlyStats" : [ {
+      "month" : 1,
       "distributorsIds" : [ ]
     }, {
       "month" : 2,
-      "distributorsIds" : [ ]
+      "distributorsIds" : [ 0 ]
     }, {
       "month" : 3,
-      "distributorsIds" : [ ]
+      "distributorsIds" : [ 0 ]
     }, {
       "month" : 4,
-      "distributorsIds" : [ ]
+      "distributorsIds" : [ 0 ]
     }, {
       "month" : 5,
-      "distributorsIds" : [ ]
+      "distributorsIds" : [ 0 ]
     }, {
       "month" : 6,
-      "distributorsIds" : [ ]
+      "distributorsIds" : [ 0 ]
     } ],
-    "energyPerDistributor" : 2995,
+    "energyPerDistributor" : 677,
     "id" : 1,
-    "priceKW" : 0.01
+    "priceKW" : 0.05
   }, {
     "energyType" : "NUCLEAR",
-    "maxDistributors" : 3,
+    "maxDistributors" : 10,
     "monthlyStats" : [ {
       "month" : 1,
       "distributorsIds" : [ ]
@@ -84,13 +116,13 @@
       "distributorsIds" : [ ]
     }, {
       "month" : 5,
-      "distributorsIds" : [ ]
+      "distributorsIds" : [ 0 ]
     }, {
       "month" : 6,
-      "distributorsIds" : [ ]
+      "distributorsIds" : [ 0 ]
     } ],
-    "energyPerDistributor" : 5583,
+    "energyPerDistributor" : 4000,
     "id" : 2,
-    "priceKW" : 0.02
+    "priceKW" : 0.08
   } ]
 }

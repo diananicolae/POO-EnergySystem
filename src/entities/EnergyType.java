@@ -14,7 +14,7 @@ public enum EnergyType {
 
     private final boolean renewable;
 
-    EnergyType(String label, boolean renewable) {
+    EnergyType(final String label, final boolean renewable) {
         this.label = label;
         this.renewable = renewable;
     }
@@ -26,4 +26,5 @@ public enum EnergyType {
     public boolean isRenewable() {
         return renewable;
     }
+
 }

@@ -8,8 +8,8 @@ import java.util.ArrayList;
  * The class contains singleton instance
  * of the database created from input
  */
-public final class SingletonInput {
-    private static SingletonInput input = null;
+public final class Input {
+    private static Input input = null;
 
     private final int numberOfTurns;
     private final ArrayList<EntityInput> consumers;
@@ -17,11 +17,11 @@ public final class SingletonInput {
     private final ArrayList<EntityInput> producers;
     private final ArrayList<Update> monthlyUpdates;
 
-    private SingletonInput(final int numberOfTurns,
-                          final ArrayList<EntityInput> consumers,
-                          final ArrayList<EntityInput> distributors,
-                           final ArrayList<EntityInput> producers,
-                          final ArrayList<Update> monthlyUpdates) {
+    private Input(final int numberOfTurns,
+                  final ArrayList<EntityInput> consumers,
+                  final ArrayList<EntityInput> distributors,
+                  final ArrayList<EntityInput> producers,
+                  final ArrayList<Update> monthlyUpdates) {
         this.numberOfTurns = numberOfTurns;
         this.consumers = consumers;
         this.distributors = distributors;
@@ -32,7 +32,7 @@ public final class SingletonInput {
     /**
      * Returns the singleton instance of input
      */
-    public static SingletonInput getInstance() {
+    public static Input getInstance() {
         if (input == null) {
             throw new AssertionError("Input not initialized.");
         }
@@ -48,7 +48,7 @@ public final class SingletonInput {
                             final ArrayList<EntityInput> distributors,
                             final ArrayList<EntityInput> producers,
                             final ArrayList<Update> monthlyUpdates) {
-        input = new SingletonInput(numberOfTurns, consumers,
+        input = new Input(numberOfTurns, consumers,
                 distributors, producers, monthlyUpdates);
     }
 

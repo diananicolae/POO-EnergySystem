@@ -1,7 +1,7 @@
 package payment;
 
 import entities.Entity;
-import io.Constants;
+import utils.Constants;
 
 /**
  * Interface for entities that receive monthly payments
@@ -72,8 +72,8 @@ public interface Payee extends Entity {
                     + this.getProductionCost() + this.getProfit();
         } else {
             contractCost = (int) Math.round(Math.floor(
-                    (double) this.getInfrastructureCost() / this.getClientsNumber())
-                    + this.getProductionCost() + this.getProfit());
+                    (double) this.getInfrastructureCost() / this.getClientsNumber()
+                    + this.getProductionCost() + this.getProfit()));
         }
         this.setContractCost(contractCost);
     }

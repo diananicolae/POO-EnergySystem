@@ -3,14 +3,17 @@ package io;
 import database.Database;
 import entities.Consumer;
 import entities.Producer;
-import payment.Contract;
+import database.Contract;
 import entities.Distributor;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import utils.Constants;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * The class prints data to output file using Object Mapper
@@ -51,6 +54,7 @@ public final class Writer {
             object.put(Constants.ENERGY_NEEDED, distributor.getEnergyNeededKW());
             object.put(Constants.CONTRACT_COST, distributor.getContractCost());
             object.put(Constants.BUDGET, distributor.getBudget());
+            object.put(Constants.PRODUCER_STRATEGY, distributor.getProducerStrategy());
             object.put(Constants.IS_BANKRUPT, distributor.isBankrupt());
 
             /* create contracts array */
@@ -78,6 +82,15 @@ public final class Writer {
 
             /* create monthly stats array */
             JSONArray jsonStats = new JSONArray();
+            for (Map.Entry<Integer, ArrayList<Integer>> entry
+                    : producer.getMonthlyStats().entrySet()) {
+                JSONObject statsObject = new JSONObject();
+                statsObject.put(Constants.MONTH, entry.getKey());
+                statsObject.put(Constants.DISTRIBUTORS_IDS, entry.getValue());
+                jsonStats.add(statsObject);
+            }
+
+            object.put(Constants.MONTHLY_STATS, jsonStats);
             jsonProducers.add(object);
         }
 

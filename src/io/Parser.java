@@ -3,11 +3,11 @@ package io;
 import database.DistributorChange;
 import database.ProducerChange;
 import database.Update;
-import entities.Entity;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import utils.Constants;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -123,7 +123,7 @@ public final class Parser {
         }
 
         /* initialize singleton input database */
-        SingletonInput.init(numberOfTurns, consumers, distributors,
+        Input.init(numberOfTurns, consumers, distributors,
                             producers, monthlyUpdates);
     }
 

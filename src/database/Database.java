@@ -4,7 +4,7 @@ import entities.Consumer;
 import entities.Distributor;
 import entities.Entity;
 import entities.Producer;
-import io.SingletonInput;
+import io.Input;
 
 import java.util.ArrayList;
 
@@ -47,7 +47,7 @@ public final class Database {
      * Transform input objects to working objects
      * */
     public static void init() {
-        SingletonInput input = SingletonInput.getInstance();
+        Input input = Input.getInstance();
         ArrayList<Consumer> consumers =
                 (ArrayList<Consumer>) Entity.transformInput(input.getConsumers());
         ArrayList<Distributor> distributors =

@@ -1,26 +1,34 @@
 package entities;
 
-import payment.Contract;
+import database.Contract;
 import payment.Payee;
+import strategies.EnergyChoiceStrategyType;
+import utils.Constants;
+import utils.Utils;
 
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * Information about a distributor
  *
  * Implements Entity and Payee interfaces
  */
-public final class Distributor implements Entity, Payee {
+public final class Distributor implements Entity, Payee, Observer {
     private final int id;
     private final int contractLength;
     private final int energyNeededKW;
-    private final String producerStrategy;
+    private int remainedEnergyNeededKW;
+    private final EnergyChoiceStrategyType producerStrategy;
     private int budget;
     private int infrastructureCost;
     private int productionCost;
     private int contractCost;
     private boolean isBankrupt;
     private final ArrayList<Contract> contracts;
+    private ArrayList<Producer> producers;
+    private boolean activeProducerChanges;
 
     public Distributor(final int id, final int contractLength,
                        final int initialBudget,
@@ -32,8 +40,10 @@ public final class Distributor implements Entity, Payee {
         this.budget = initialBudget;
         this.infrastructureCost = initialInfrastructureCost;
         this.energyNeededKW = energyNeededKW;
-        this.producerStrategy = producerStrategy;
+        this.remainedEnergyNeededKW = energyNeededKW;
+        this.producerStrategy = Utils.stringToStrategyType(producerStrategy);
         this.contracts = new ArrayList<>();
+        this.producers = new ArrayList<>();
     }
 
     /**
@@ -93,16 +103,36 @@ public final class Distributor implements Entity, Payee {
         return contracts;
     }
 
+    public int getEnergyNeededKW() {
+        return energyNeededKW;
+    }
+
+    public EnergyChoiceStrategyType getProducerStrategy() {
+        return producerStrategy;
+    }
+
+    public int getRemainedEnergyNeededKW() {
+        return remainedEnergyNeededKW;
+    }
+
+    public ArrayList<Producer> getProducers() {
+        return producers;
+    }
+
+    public void setActiveProducerChanges(final boolean activeProducerChanges) {
+        this.activeProducerChanges = activeProducerChanges;
+    }
+
+    public boolean hasActiveProducerChanges() {
+        return activeProducerChanges;
+    }
+
     public void setBankrupt(final boolean bankrupt) {
         isBankrupt = bankrupt;
     }
 
     public void setInfrastructureCost(final int infrastructureCost) {
         this.infrastructureCost = infrastructureCost;
-    }
-
-    public void setProductionCost(final int productionCost) {
-        this.productionCost = productionCost;
     }
 
     public void setBudget(final int budget) {
@@ -113,11 +143,30 @@ public final class Distributor implements Entity, Payee {
         this.contractCost = contractCost;
     }
 
-    public int getEnergyNeededKW() {
-        return energyNeededKW;
+    public void addProducer(final Producer producer) {
+        producers.add(producer);
+        remainedEnergyNeededKW -= producer.getEnergyPerDistributor();
+        producer.addDistributor(this);
     }
 
-    public String getProducerStrategy() {
-        return producerStrategy;
+    public void removeAllProducers() {
+        for (Producer producer : producers) {
+            producer.removeDistributor(this);
+        }
+        remainedEnergyNeededKW = energyNeededKW;
+        producers.clear();
+    }
+
+    public void determineProductionCost() {
+        double cost = 0;
+        for (Producer producer : producers) {
+            cost += producer.getEnergyPerDistributor() * producer.getPriceKW();
+        }
+        productionCost = (int) Math.round(Math.floor(cost / Constants.COST_PERCENT));
+    }
+
+    @Override
+    public void update(final Observable producer, final Object obj) {
+        activeProducerChanges = true;
     }
 }

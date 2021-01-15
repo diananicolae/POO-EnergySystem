@@ -1,7 +1,7 @@
 package entities;
 
 import io.EntityInput;
-import io.Constants;
+import utils.Constants;
 
 /**
  * Factory for classes implementing the Entity interface

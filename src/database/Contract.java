@@ -1,4 +1,4 @@
-package payment;
+package database;
 
 /**
  * Information about a contract between distributor and consumer
