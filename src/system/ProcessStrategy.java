@@ -69,18 +69,31 @@ public final class ProcessStrategy {
         }
     }
 
+    /**
+     * Choose producers for each distributor
+     */
     public void setProducers(final ArrayList<Distributor> distributors,
                              final ArrayList<Producer> producers) {
         for (Distributor distributor : distributors) {
+            /* bankrup distributor is ignroed */
             if (distributor.isBankrupt()) {
                 return;
             }
+            /* if a distributor has a producer with active changes */
             if (distributor.hasActiveProducerChanges()) {
+                /* remove this distributor from their producers */
+                for (Producer producer : producers) {
+                    producer.removeDistributor(distributor);
+                }
+                /* clear distributor's list of producers */
                 distributor.removeAllProducers();
                 distributor.setActiveProducerChanges(false);
             }
+            /* create an energy strategy choice for the distributor */
             EnergyChoiceStrategy strategy =
                     StrategyFactory.createStrategy(distributor.getProducerStrategy());
+            /* set enough producers for the distributor */
+            assert strategy != null;
             strategy.producerChoice(producers, distributor);
         }
     }
@@ -171,6 +184,9 @@ public final class ProcessStrategy {
         }
     }
 
+    /**
+     * Determine and set the monthly statistics for each producer
+     */
     public void determineMonthlyStats(final ArrayList<Producer> producers,
                                       final int month) {
         for (Producer producer : producers) {

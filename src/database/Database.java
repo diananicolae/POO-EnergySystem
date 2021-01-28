@@ -15,11 +15,11 @@ import java.util.ArrayList;
 public final class Database {
     private static Database database = null;
 
-    private ArrayList<Consumer> consumers;
-    private ArrayList<Distributor> distributors;
-    private ArrayList<Producer> producers;
-    private ArrayList<Update> updates;
-    private int numberOfTurns;
+    private final ArrayList<Consumer> consumers;
+    private final ArrayList<Distributor> distributors;
+    private final ArrayList<Producer> producers;
+    private final ArrayList<Update> updates;
+    private final int numberOfTurns;
 
     private Database(final ArrayList<Consumer> consumers,
                      final ArrayList<Distributor> distributors,
@@ -35,7 +35,7 @@ public final class Database {
 
     /**
      * Returns the singleton instance of database
-     * */
+     */
     public static Database getInstance() {
         if (database == null) {
             throw new AssertionError("Database not initialized.");
@@ -45,7 +45,7 @@ public final class Database {
 
     /**
      * Transform input objects to working objects
-     * */
+     */
     public static void init() {
         Input input = Input.getInstance();
         ArrayList<Consumer> consumers =
@@ -55,13 +55,13 @@ public final class Database {
         ArrayList<Producer> producers =
                 (ArrayList<Producer>) Entity.transformInput(input.getProducers());
         ArrayList<Update> updates = input.getMonthlyUpdates();
-        int numberOfTurns = input.getNumberOfTurns() + 1;
+        int numberOfTurns = input.getNumberOfTurns();
         database = new Database(consumers, distributors, producers, updates, numberOfTurns);
     }
 
     /**
      * Add new consumers to database
-     * */
+     */
     public void addNewConsumers(final Update update) {
         ArrayList<Consumer> newConsumers =
                 (ArrayList<Consumer>) Entity.transformInput(update.getNewConsumers());

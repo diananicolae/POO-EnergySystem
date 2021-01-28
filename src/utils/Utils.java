@@ -3,11 +3,13 @@ package utils;
 import entities.EnergyType;
 import strategies.EnergyChoiceStrategyType;
 
-public class Utils {
+public final class Utils {
+    private Utils() {
+    }
 
     /**
      * Transforms a string into an enum
-     * @param energyType for producers
+     * @param energyType for producers' energy type
      * @return an EnergyType Enum
      */
     public static EnergyType stringToEnergyType(final String energyType) {
@@ -34,5 +36,4 @@ public class Utils {
             default -> null;
         };
     }
-
 }

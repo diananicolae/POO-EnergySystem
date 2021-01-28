@@ -5,8 +5,7 @@ import database.Update;
 import java.util.ArrayList;
 
 /**
- * The class contains singleton instance
- * of the database created from input
+ * The class contains singleton instance of the database created from input
  */
 public final class Input {
     private static Input input = null;

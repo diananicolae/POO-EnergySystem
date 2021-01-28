@@ -1,13 +1,20 @@
 package payment;
 
 import database.Contract;
-import entities.Entity;
 import utils.Constants;
 
 /**
  * Interface for entities that make monthly payments
  */
-public interface Payer extends Entity {
+public interface Payer {
+    /**
+     * Returns budget
+     */
+    int getBudget();
+    /**
+     * Sets budget
+     */
+    void setBudget(int budget);
     /**
      * Returns if payer is indebted
      */
@@ -28,6 +35,18 @@ public interface Payer extends Entity {
      * Returns payer's current contract
      */
     Contract getContract();
+    /**
+     * Returns if entity is bankrupt
+     */
+    boolean isBankrupt();
+    /**
+     * Sets bankruptcy
+     */
+    void setBankrupt(boolean bankrupt);
+    /**
+     * Returns monthly income
+     */
+    int getMonthlyIncome();
 
     /**
      * Pays the contract cost to the payee
@@ -37,68 +56,72 @@ public interface Payer extends Entity {
      */
      default void pay(final Payee payee, final Contract contract) {
          /* the bankrupt payer is ignored */
-         if (this.isBankrupt()) {
+         if (isBankrupt()) {
              return;
          }
 
-         int budget = this.getBudget();
+         int budget = getBudget();
          int cost = 0;
 
-         if (this.isIndebted()) {
+         if (isIndebted()) {
              /* payer is indebted but cannot pay */
-             if (budget < this.getCostPenalty()) {
+             if (budget < getCostPenalty()) {
                  /* becomes bankrupt */
-                 this.setBankrupt(true);
+                 setBankrupt(true);
              } else {
                  /* payer is indebted and can pay */
-                 cost = this.getCostPenalty();
+                 cost = getCostPenalty();
                  /* pays and debt is erased */
-                 this.eraseDebt();
-                 this.setIndebted(false);
+                 eraseDebt();
+                 setIndebted(false);
              }
          } else {
              /* payer cannot pay */
              if (budget < contract.getPrice()) {
                  /* set new debt */
-                 this.setDebt(contract.getPrice());
-                 this.setIndebted(true);
+                 setDebt(contract.getPrice());
+                 setIndebted(true);
              } else {
                  /* payer can pay */
                  cost = contract.getPrice();
              }
          }
          /* subtract amount from payer's budget */
-         this.setBudget(budget - cost);
+         setBudget(budget - cost);
          contract.decreaseContractMonths();
          /* payee receives payment amount */
          payee.getPaid(cost);
      }
+
     /**
      * Payer gets monthly income
      */
      default void getIncome() {
-         if (!this.isBankrupt()) {
-             int budget = this.getBudget() + this.getMonthlyIncome();
-             this.setBudget(budget);
+         if (!isBankrupt()) {
+             int budget = getBudget() + getMonthlyIncome();
+             setBudget(budget);
          }
      }
+
     /**
      * Determine payer's cost penalty
      */
     default int getCostPenalty() {
-        return (int) Math.round(Math.floor(Constants.DEBT_PERCENT * this.getDebt())
-                + this.getContractCost());
+        return (int) Math.round(Math.floor(Constants.DEBT_PERCENT * getDebt())
+                + getContractCost());
     }
+
     /**
      * Get the cost of the contract
      */
     default int getContractCost() {
-        return this.getContract().getPrice();
+        return getContract().getPrice();
     }
+
     /**
      * Erase a payer's debt
      */
     default void eraseDebt() {
-        this.setDebt(0);
+        setDebt(0);
     }
 }

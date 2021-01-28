@@ -4,33 +4,9 @@ import io.EntityInput;
 import java.util.ArrayList;
 
 /**
- * Common interface between Consumer and Distributor classes
+ * Common interface between Consumer, Distributor and Producer
  */
 public interface Entity {
-    /**
-     * Returns id
-     */
-    int getId();
-    /**
-     * Returns budget
-     */
-    int getBudget();
-    /**
-     * Sets budget
-     */
-    void setBudget(int budget);
-    /**
-     * Returns if entity is bankrupt
-     */
-    boolean isBankrupt();
-    /**
-     * Sets bankruptcy
-     */
-    void setBankrupt(boolean bankrupt);
-    /**
-     * Returns monthly income
-     */
-    int getMonthlyIncome();
     /**
      * Transforms input to list of working entities
      *

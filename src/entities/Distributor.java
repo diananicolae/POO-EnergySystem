@@ -3,7 +3,6 @@ package entities;
 import database.Contract;
 import payment.Payee;
 import strategies.EnergyChoiceStrategyType;
-import utils.Constants;
 import utils.Utils;
 
 import java.util.ArrayList;
@@ -13,22 +12,23 @@ import java.util.Observer;
 /**
  * Information about a distributor
  *
- * Implements Entity and Payee interfaces
+ * Implements Entity, Payee and Observer interfaces
  */
 public final class Distributor implements Entity, Payee, Observer {
     private final int id;
-    private final int contractLength;
-    private final int energyNeededKW;
-    private int remainedEnergyNeededKW;
-    private final EnergyChoiceStrategyType producerStrategy;
     private int budget;
-    private int infrastructureCost;
     private int productionCost;
     private int contractCost;
     private boolean isBankrupt;
-    private final ArrayList<Contract> contracts;
-    private ArrayList<Producer> producers;
+    private final int contractLength;
+    private final int energyNeededKW;
+    private int remainedEnergyNeededKW;
+    private int infrastructureCost;
     private boolean activeProducerChanges;
+    private final ArrayList<Contract> contracts;
+    private final ArrayList<Producer> producers;
+    private final EnergyChoiceStrategyType producerStrategy;
+
 
     public Distributor(final int id, final int contractLength,
                        final int initialBudget,
@@ -65,6 +65,39 @@ public final class Distributor implements Entity, Payee, Observer {
      */
     public void removeContract(final Contract contract) {
         contracts.remove(contract);
+    }
+
+    /**
+     * Add a new producer to producers list
+     * Subtract the quantity of energy offered by the producer
+     */
+    public void addProducer(final Producer producer) {
+        producers.add(producer);
+        remainedEnergyNeededKW -= producer.getEnergyPerDistributor();
+        producer.addDistributor(this);
+    }
+
+    /**
+     * Remove every producer from producers list
+     * Reset the needed quantity of energy
+     */
+    public void removeAllProducers() {
+        remainedEnergyNeededKW = energyNeededKW;
+        producers.clear();
+    }
+
+    /**
+     * Receive notification that a producer has changes
+     */
+    public void update(final Observable producer, final Object obj) {
+        activeProducerChanges = true;
+    }
+
+    /**
+     * Returns if one of the producers has active changes
+     */
+    public boolean hasActiveProducerChanges() {
+        return activeProducerChanges;
     }
 
     public int getId() {
@@ -119,12 +152,12 @@ public final class Distributor implements Entity, Payee, Observer {
         return producers;
     }
 
-    public void setActiveProducerChanges(final boolean activeProducerChanges) {
-        this.activeProducerChanges = activeProducerChanges;
+    public void setProductionCost(final int productionCost) {
+        this.productionCost = productionCost;
     }
 
-    public boolean hasActiveProducerChanges() {
-        return activeProducerChanges;
+    public void setActiveProducerChanges(final boolean activeProducerChanges) {
+        this.activeProducerChanges = activeProducerChanges;
     }
 
     public void setBankrupt(final boolean bankrupt) {
@@ -141,32 +174,5 @@ public final class Distributor implements Entity, Payee, Observer {
 
     public void setContractCost(final int contractCost) {
         this.contractCost = contractCost;
-    }
-
-    public void addProducer(final Producer producer) {
-        producers.add(producer);
-        remainedEnergyNeededKW -= producer.getEnergyPerDistributor();
-        producer.addDistributor(this);
-    }
-
-    public void removeAllProducers() {
-        for (Producer producer : producers) {
-            producer.removeDistributor(this);
-        }
-        remainedEnergyNeededKW = energyNeededKW;
-        producers.clear();
-    }
-
-    public void determineProductionCost() {
-        double cost = 0;
-        for (Producer producer : producers) {
-            cost += producer.getEnergyPerDistributor() * producer.getPriceKW();
-        }
-        productionCost = (int) Math.round(Math.floor(cost / Constants.COST_PERCENT));
-    }
-
-    @Override
-    public void update(final Observable producer, final Object obj) {
-        activeProducerChanges = true;
     }
 }

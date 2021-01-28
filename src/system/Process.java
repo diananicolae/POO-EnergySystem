@@ -15,6 +15,9 @@ public final class Process {
         this.database = database;
     }
 
+    /**
+     * Process payments for the first month
+     */
     public void processFirstMonthPayments() {
         /* distributors choose producers */
         processStrategy.setProducers(database.getDistributors(),

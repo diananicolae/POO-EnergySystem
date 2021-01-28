@@ -1,12 +1,22 @@
 package payment;
 
-import entities.Entity;
+import entities.Producer;
 import utils.Constants;
+
+import java.util.ArrayList;
 
 /**
  * Interface for entities that receive monthly payments
  */
-public interface Payee extends Entity {
+public interface Payee {
+    /**
+     * Returns budget
+     */
+    int getBudget();
+    /**
+     * Sets budget
+     */
+    void setBudget(int budget);
     /**
      * Returns infrastructure cost
      */
@@ -23,58 +33,89 @@ public interface Payee extends Entity {
      * Sets the price of the contract
      */
     void setContractCost(int contractCost);
+    /**
+     *
+     */
+    void setProductionCost(int productionCost);
+    /**
+     *
+     */
+    ArrayList<Producer> getProducers();
+    /**
+     * Returns if entity is bankrupt
+     */
+    boolean isBankrupt();
+    /**
+     * Sets bankruptcy
+     */
+    void setBankrupt(boolean bankrupt);
 
     /**
      * Determine payee's profit
      */
     default int getProfit() {
         return (int) Math.round(Math.floor(Constants.PROFIT_PERCENT
-                * this.getProductionCost()));
+                * getProductionCost()));
     }
+
     /**
      * Determine payee's monthly costs
      */
     default int getMonthlyCosts() {
-        return this.getInfrastructureCost()
-                + this.getProductionCost() * this.getClientsNumber();
+        return getInfrastructureCost()
+                + getProductionCost() * getClientsNumber();
     }
+
     /**
      * Payee gets paid
      */
     default void getPaid(final int cost) {
-        int budget = this.getBudget() + cost;
-        this.setBudget(budget);
+        int budget = getBudget() + cost;
+        setBudget(budget);
     }
+
     /**
      * Payee pays costs
      */
     default void payCosts() {
-        int budget = this.getBudget();
+        int budget = getBudget();
         if (budget < 0) {
-            this.setBankrupt(true);
+            setBankrupt(true);
             return;
         }
         /* subtract amount from payee's budget */
-        this.setBudget(budget - this.getMonthlyCosts());
+        setBudget(budget - getMonthlyCosts());
     }
+
     /**
      * Determine the payee's final contract cost
      */
     default void determineContractCost() {
         /* bankrupt payee is ignored */
-        if (this.isBankrupt()) {
+        if (isBankrupt()) {
             return;
         }
 
         int contractCost;
-        if (this.getClientsNumber() == 0) {
-            contractCost = this.getInfrastructureCost()
-                    + this.getProductionCost() + this.getProfit();
+        if (getClientsNumber() == 0) {
+            contractCost = getInfrastructureCost()
+                    + getProductionCost() + getProfit();
         } else {
             contractCost = (int) Math.round(Math.floor(
-                    (double) this.getInfrastructureCost() / this.getClientsNumber()
-                    + this.getProductionCost() + this.getProfit()));
+                    (double) getInfrastructureCost() / getClientsNumber()
+                    + getProductionCost() + getProfit()));
         }
-        this.setContractCost(contractCost);
+        setContractCost(contractCost);
+    }
+
+    /**
+     *
+     */
+    default void determineProductionCost() {
+        double cost = 0;
+        for (Producer producer : getProducers()) {
+            cost += producer.getEnergyPerDistributor() * producer.getPriceKW();
+        }
+        setProductionCost((int) Math.round(Math.floor(cost / Constants.COST_PERCENT)));
     }
 }

@@ -6,7 +6,7 @@ import utils.Constants;
 /**
  * Factory for classes implementing the Entity interface
  *
- * Creates new instances of Consumer or Distributor
+ * Creates new instances of Consumer, Distributor or Producer
  */
 public final class EntityFactory {
     private EntityFactory() {

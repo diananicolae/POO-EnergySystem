@@ -10,12 +10,12 @@ import payment.Payer;
  */
 public final class Consumer implements Entity, Payer {
     private final int id;
-    private final int monthlyIncome;
     private int budget;
+    private int debt;
     private boolean isBankrupt;
     private Contract contract;
     private boolean isIndebted;
-    private int debt;
+    private final int monthlyIncome;
 
     public Consumer(final int id, final int monthlyIncome,
                     final int initialBudget) {

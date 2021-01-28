@@ -75,7 +75,7 @@ class Config {
         return gitScore;
     }
 
-    public void setGitScore(Integer gitScore) {
+    public void setGitScore(final Integer gitScore) {
         this.gitScore = gitScore;
     }
 }

@@ -63,8 +63,6 @@ public final class EntityInput {
         this.energyPerDistributor = energyPerDistributor;
     }
 
-
-
     public int getId() {
         return id;
     }

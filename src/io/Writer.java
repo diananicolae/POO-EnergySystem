@@ -29,9 +29,8 @@ public final class Writer {
      * Transforms content and writes to output file
      *
      * @param database final processed database
-     * @throws IOException in case of exceptions to reading / writing
      */
-    public void writeFile(final Database database) throws IOException {
+    public void writeFile(final Database database) {
 
         JSONArray jsonConsumers = new JSONArray();
         JSONArray jsonDistributors = new JSONArray();
